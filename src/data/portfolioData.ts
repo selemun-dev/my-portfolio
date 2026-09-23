@@ -174,6 +174,6 @@ Beyond research, I'm actively involved in community service as the General Secre
 
   contact: {
     email: 'selemun.abrha.teklu@gmail.com',
-    institutionalEmail: 'mitur12212@mu.edu.et',
+    institutionalEmail: 'mitur12212@office.mu.edu.et',
   },
 };
