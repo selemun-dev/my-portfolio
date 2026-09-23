@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand palette */
+  --brand-50:  #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+
+  /* Neutral palette — strong contrast */
+  --ink-900: #0f172a;   /* headings */
+  --ink-700: #334155;   /* body */
+  --ink-500: #64748b;   /* muted */
+  --ink-200: #e2e8f0;   /* borders */
+
+  --surface:      #ffffff;
+  --surface-soft: #f8fafc;
+}
+
+/* Force light theme — no OS dark mode flipping */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--surface);
+  color: var(--ink-700);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Section entrance animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+/* Smooth hover lift for cards */
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -12px rgba(15, 23, 42, 0.18);
+}
+
+/* Gradient text for hero */
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated underline on nav links */
+.nav-link {
+  position: relative;
+  color: var(--ink-700);
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--brand-600);
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: var(--brand-600); }
+.nav-link:hover::after { width: 100%; }
+
+/* ─── Smooth scrolling with offset for fixed nav ─── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* 80px = nav height */
+}
+
+/* ─── Nav active indicator ─── */
+.nav-link {
+  position: relative;
+  color: var(--ink-700);
+  padding: 0.25rem 0;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  color: var(--brand-600);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Active (currently visible) section link ─── */
+.nav-link-active {
+  color: var(--brand-600) !important;
+  font-weight: 600;
+}
+.nav-link-active::after {
+  width: 100%;
+}
+
+/* ─── Scroll progress bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+  z-index: 60;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
+}
+
+/* ─── Mobile drawer animation ─── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mobile-drawer {
+  animation: slideDown 0.25s ease-out forwards;
+}
+
+/* ─── Backdrop fade-in ─── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.mobile-backdrop {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* ─── Pulse dot on nav logo ─── */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.85); }
+}
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+/* ─── Nav links on dark (scrolled) header ─── */
+.nav-link-dark {
+  color: #cbd5e1; /* slate-300 */
+}
+.nav-link-dark:hover {
+  color: #ffffff;
+}
+.nav-link-dark::after {
+  background: linear-gradient(90deg, #818cf8, #a78bfa);
+}
+.nav-link-dark.nav-link-active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+.nav-link-dark.nav-link-active::after {
+  width: 100%;
+}
